@@ -261,7 +261,7 @@ const Contact = () => (
           <label>Email professionnel</label>
           <input type="email" required placeholder="nom@entreprise.com" />
         </div>
-        <div className="form-group">
+        <div className="form-group ">
           <label>Objet</label>
           <select>
             <option>Demande de devis (Vrac/Pro)</option>
