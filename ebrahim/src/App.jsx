@@ -307,38 +307,95 @@ const B2B = () => (
 
 const Contact = () => (
   <section className="container">
-    <div style={{maxWidth: '700px', margin: '0 auto'}}>
-      <h1 className="text-center section-title">Contactez-nous</h1>
-      <p className="text-center mb-40" style={{fontSize: '1.1rem'}}>
-        Pour toute demande de devis, partenariat ou information générale, notre équipe est à votre disposition.<br/>
-        <strong className="text-gold">info@ebrahimi-group.ch</strong>
-      </p>
+    <div className="text-center mb-40">
+      <h1 className="section-title">Prenons Contact</h1>
+      <p className="section-subtitle">UNE QUESTION ? UN PROJET ? NOUS SOMMES À VOTRE ÉCOUTE.</p>
+    </div>
+
+    <div className="contact-section-wrapper">
       
-      {/* FORMULAIRE - Connecter à Formspree plus tard */}
-      <form className="contact-form">
-        <div className="form-group">
-          <label>Nom complet</label>
-          <input type="text" required placeholder="Votre Nom" />
+      {/* Panneau d'informations (Gauche) */}
+      <div className="contact-info-panel">
+        
+        <div className="contact-info-item">
+          <div className="contact-icon-box"><Phone size={24} color="var(--color-gold)"/></div>
+          <div className="contact-info-content">
+            <h4>Téléphone & WhatsApp</h4>
+            <p>+41 78 268 44 84</p>
+            <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Disponible 7j/7</p>
+          </div>
         </div>
-        <div className="form-group">
-          <label>Email professionnel</label>
-          <input type="email" required placeholder="nom@entreprise.com" />
+
+        <div className="contact-info-item">
+          <div className="contact-icon-box"><Mail size={24} color="var(--color-gold)"/></div>
+          <div className="contact-info-content">
+            <h4>Email Professionnel</h4>
+            <p>info@ebrahimi-group.ch</p>
+            <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Réponse sous 24h</p>
+          </div>
         </div>
-        <div className="form-group">
-          <label>Objet</label>
-          <select>
-            <option>Demande de devis (Vrac/Pro)</option>
-            <option>Question sur une commande</option>
-            <option>Partenariat / Export</option>
-            <option>Autre</option>
-          </select>
+
+        <div className="contact-info-item">
+          <div className="contact-icon-box"><MapPin size={24} color="var(--color-gold)"/></div>
+          <div className="contact-info-content">
+            <h4>Siège Social</h4>
+            <p>Suisse</p>
+            <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Livraison dans toute l'Europe</p>
+          </div>
         </div>
-        <div className="form-group">
-          <label>Message</label>
-          <textarea rows="6" required placeholder="Comment pouvons-nous vous aider ?"></textarea>
+
+        <div style={{marginTop: '40px', paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.1)'}}>
+          <h4 style={{color: 'white', marginBottom: '15px'}}>Besoin d'un devis Pro ?</h4>
+          <p style={{color: '#aaa', fontSize: '0.9rem', marginBottom: '20px'}}>
+            Pour les restaurants et revendeurs, accédez à nos tarifs préférentiels.
+          </p>
+          <Link to="/b2b" className="btn btn-outline" style={{width: '100%'}}>Espace Professionnel</Link>
         </div>
-        <button type="submit" className="btn btn-primary" style={{width: '100%'}}>Envoyer le message</button>
-      </form>
+
+      </div>
+
+      {/* Formulaire (Droite) */}
+      <div className="contact-form-panel">
+        <h3 style={{marginBottom: '30px', fontFamily: 'var(--font-heading)'}}>Envoyez-nous un message</h3>
+        <form className="contact-form">
+          <div className="form-row-split">
+            <div className="form-group">
+              <label>Prénom / Nom</label>
+              <input type="text" required placeholder="Votre nom" />
+            </div>
+            <div className="form-group">
+              <label>Téléphone</label>
+              <input type="tel" placeholder="+41 ..." />
+            </div>
+          </div>
+          
+          <div className="form-group">
+            <label>Email Professionnel</label>
+            <input type="email" required placeholder="nom@entreprise.com" />
+          </div>
+
+          <div className="form-group">
+            <label>Objet de la demande</label>
+            <select>
+              <option>Sélectionnez un sujet...</option>
+              <option>Demande de tarifs (Pro)</option>
+              <option>Commande Particulier</option>
+              <option>Information Produit</option>
+              <option>Presse & Partenariat</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label>Votre Message</label>
+            <textarea rows="5" required placeholder="Comment pouvons-nous vous aider ?"></textarea>
+          </div>
+
+          <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '10px'}}>
+            Envoyer ma demande
+          </button>
+        </form>
+      </div>
+
     </div>
   </section>
 );
