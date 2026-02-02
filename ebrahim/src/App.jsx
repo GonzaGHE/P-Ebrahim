@@ -61,21 +61,45 @@ const Footer = () => (
   <footer>
     <div className="container">
       <div className="footer-grid">
-        <div>
-          <h3 style={{fontSize: '1.5rem', marginBottom: '20px', fontFamily: 'var(--font-heading)'}}>EBRAHIMI GROUP</h3>
-          <p style={{opacity: 0.8}}>Importateur et distributeur suisse de safran premium.</p>
-          <div style={{marginTop: '30px', opacity: 0.8}}>
-            <p style={{display: 'flex', alignItems: 'center', gap: '10px'}}><MapPin size={18} color="var(--color-gold)"/> Basé en Suisse</p>
-            <p style={{display: 'flex', alignItems: 'center', gap: '10px'}}><Mail size={18} color="var(--color-gold)"/> info@ebrahimi-group.ch</p>
-             <p style={{display: 'flex', alignItems: 'center', gap: '10px'}}><Phone size={18} color="var(--color-gold)"/> +41 78 268 44 84</p>
-          </div>
+        
+        {/* Colonne 1 : Marque */}
+        <div className="footer-col">
+          <h3 className="footer-logo">EBRAHIMI GROUP</h3>
+          <p className="footer-desc">
+            Importateur et distributeur suisse de safran premium. Une qualité sans compromis, de la terre à l'assiette.
+          </p>
         </div>
-        <div style={{textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-          <p style={{fontStyle: 'italic', fontSize: '1.4rem', color: 'var(--color-green)', lineHeight: '1.4', fontFamily: 'var(--font-heading)'}}>
+
+        {/* Colonne 2 : Navigation */}
+        <div className="footer-col">
+          <h4 className="footer-title">Navigation</h4>
+          <ul className="footer-links">
+            <li><Link to="/">Accueil</Link></li>
+            <li><Link to="/products">Nos Produits</Link></li>
+            <li><Link to="/b2b">Espace Pro</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
+        </div>
+
+        {/* Colonne 3 : Contact */}
+        <div className="footer-col">
+          <h4 className="footer-title">Contact</h4>
+          <ul className="footer-contact">
+            <li><MapPin size={18} color="var(--color-gold)"/> Suisse</li>
+            <li><Mail size={18} color="var(--color-gold)"/>info@ebrahimi-group.ch</li>
+            <li><Phone size={18} color="var(--color-gold)"/>+41 78 268 44 84</li>
+          </ul>
+        </div>
+
+        {/* Colonne 4 : Citation */}
+        <div className="footer-col" style={{display: 'flex', alignItems: 'center'}}>
+          <p className="footer-quote">
             "Derrière chaque filament de safran, il y a une terre, un savoir-faire et des mains qui travaillent avec patience et dignité."
           </p>
         </div>
+
       </div>
+      
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Ebrahimi Group. Tous droits réservés.</span>
       </div>
