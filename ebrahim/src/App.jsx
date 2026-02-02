@@ -163,8 +163,8 @@ const Home = () => (
 );
 
 const About = () => (
-  <section className="container section-commitment">
-    <div style={{maxWidth: '900px', margin: '0 auto'}}>
+  <section className="section-commitment">
+    <div className="container">
       <div className="commitment-header text-center">
         <h1 className="section-title">Notre Engagement</h1>
         <p className="lead-text">
