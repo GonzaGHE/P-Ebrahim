@@ -243,6 +243,9 @@ const Products = () => (
           <div className="product-meta">
 
             <h3 className="product-title">Éclat de Safran - 1g</h3>
+            <div style={{fontSize: '1.4rem', color: 'var(--color-gold)', fontWeight: '600', marginBottom: '10px', fontFamily: 'var(--font-heading)'}}>
+              15.90 CHF
+            </div>
             <p className="product-desc">L'excellence pour votre cuisine quotidienne. <br/>Pureté certifiée ISO 3632.</p>
             
             <ul style={{textAlign: 'left', margin: '0 auto 20px', maxWidth: '80%', fontSize: '0.9rem', color: '#555', listStyle: 'none'}}>
@@ -271,6 +274,9 @@ const Products = () => (
           <div className="product-meta">
 
             <h3 className="product-title">Trésor de Safran - 2g</h3>
+            <div style={{fontSize: '1.4rem', color: 'var(--color-gold)', fontWeight: '600', marginBottom: '10px', fontFamily: 'var(--font-heading)'}}>
+              29.90 CHF
+            </div>
             <p className="product-desc">Le format idéal pour les connaisseurs. <br/>Arôme intense et couleur profonde.</p>
             
             <ul style={{textAlign: 'left', margin: '0 auto 20px', maxWidth: '80%', fontSize: '0.9rem', color: '#555', listStyle: 'none'}}>
