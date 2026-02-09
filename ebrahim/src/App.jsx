@@ -357,14 +357,19 @@ const Contact = () => {
     const TEMPLATE_ID_ADMIN = 'template_4uk6pwk'; // Template pour VOUS (Notification)
     const PUBLIC_KEY = '36N88fav0oLsDc75W';
 
-    // 1. Envoi au CLIENT (Confirmation)
+    // 1. Envoi au CLIENT (Confirmation) via sendForm
     const clientEmail = emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_CLIENT, form.current, {
       publicKey: PUBLIC_KEY,
     });
 
-    // 2. Envoi à l'ADMIN (Votre notification complète)
-    // Note: Pour l'admin, on utilise send() ou on s'assure que le template Admin a bien "info@ebrahimi-group.ch" en destinataire hardcodé
-    const adminEmail = emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_ADMIN, form.current, {
+    // 2. Envoi à l'ADMIN (Notification) via send (plus robuste pour le double envoi)
+    const adminEmail = emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, {
+        user_name: form.current.user_name.value,
+        user_email: form.current.user_email.value,
+        user_phone: form.current.user_phone.value,
+        subject: form.current.subject.value,
+        message: form.current.message.value,
+    }, {
         publicKey: PUBLIC_KEY,
     });
 
