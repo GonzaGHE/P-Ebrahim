@@ -353,18 +353,27 @@ const Contact = () => {
 
     // REMPLACEZ CES VALEURS PAR LES VÔTRES DEPUIS EMAILJS DASHBOARD
     const SERVICE_ID = 'service_720nydw'; 
-    const TEMPLATE_ID = 'template_4f7230g';
+    const TEMPLATE_ID_CLIENT = 'template_4f7230g'; // Template pour le CLIENT (Auto-reply)
+    const TEMPLATE_ID_ADMIN = 'template_4uk6pwk'; // Template pour VOUS (Notification)
     const PUBLIC_KEY = '36N88fav0oLsDc75W';
 
-    emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
+    // 1. Envoi au CLIENT (Confirmation)
+    const clientEmail = emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_CLIENT, form.current, {
+      publicKey: PUBLIC_KEY,
+    });
+
+    // 2. Envoi à l'ADMIN (Votre notification complète)
+    // Note: Pour l'admin, on utilise send() ou on s'assure que le template Admin a bien "info@ebrahimi-group.ch" en destinataire hardcodé
+    const adminEmail = emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_ADMIN, form.current, {
         publicKey: PUBLIC_KEY,
-      })
+    });
+
+    Promise.all([clientEmail, adminEmail])
       .then(
         () => {
           setStatus('success');
           form.current.reset();
-          setTimeout(() => setStatus(''), 5000); // Clear success message after 5s
+          setTimeout(() => setStatus(''), 5000); 
         },
         (error) => {
           setStatus('error');
