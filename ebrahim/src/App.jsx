@@ -233,7 +233,7 @@ const Products = () => (
       
       <div className="product-grid">
         {/* PRODUIT 1G */}
-        <div className="product-card">
+          <div className="product-card">
           <div className="packshot-container">
             <img src="/1gramme.jpeg" alt="Safran 1 gramme" className="packshot-img" />
           </div>
@@ -242,6 +242,12 @@ const Products = () => (
             <h3 className="product-title">Éclat de Safran - 1g</h3>
             <p className="product-desc">L'excellence pour votre cuisine quotidienne. <br/>Pureté certifiée ISO 3632.</p>
             
+            <ul style={{textAlign: 'left', margin: '0 auto 20px', maxWidth: '80%', fontSize: '0.9rem', color: '#555', listStyle: 'none'}}>
+              <li>• Safran filaments entiers</li>
+              <li>• Grade 1 (ISO 3632)</li>
+              <li>• Origine : Afghanistan, Herat</li>
+            </ul>
+
             <a href="mailto:info@ebrahimi-group.ch?subject=Commande%20Safran%201g" 
                className="btn btn-luxury">
                <Mail size={16} style={{marginRight: '8px'}}/> COMMANDER PAR EMAIL
@@ -264,6 +270,12 @@ const Products = () => (
             <h3 className="product-title">Trésor de Safran - 2g</h3>
             <p className="product-desc">Le format idéal pour les connaisseurs. <br/>Arôme intense et couleur profonde.</p>
             
+            <ul style={{textAlign: 'left', margin: '0 auto 20px', maxWidth: '80%', fontSize: '0.9rem', color: '#555', listStyle: 'none'}}>
+              <li>• Safran filaments entiers</li>
+              <li>• Grade 1 (ISO 3632)</li>
+              <li>• Origine : Afghanistan, Herat</li>
+            </ul>
+
             <a href="mailto:info@ebrahimi-group.ch?subject=Commande%20Safran%202g" 
                className="btn btn-luxury">
                <Mail size={16} style={{marginRight: '8px'}}/> COMMANDER PAR EMAIL
