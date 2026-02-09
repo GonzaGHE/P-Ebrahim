@@ -439,26 +439,15 @@ nav {
   overflow: hidden;
   border-radius: var(--radius-std);
 }
-.packshot-saffron {
-  /* Placeholder neutre pour future photo */
+.packshot-img {
   width: 100%;
   height: 100%;
-  background: #eeeeee; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ccc;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  object-fit: contain; /* Keep the whole image visible */
+  transition: transform 0.5s ease;
 }
-.packshot-saffron::after {
-  content: 'Photo à venir'; 
-}
-.product-card:hover .packshot-saffron {
-  /* Pas d'effet spécial sur le placeholder */
-  transform: none;
-  box-shadow: none;
+
+.product-card:hover .packshot-img {
+  transform: scale(1.05);
 }
 
 .product-meta { padding: 0; }

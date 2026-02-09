@@ -210,7 +210,7 @@ const Products = () => (
         {/* PRODUIT 1G */}
         <div className="product-card">
           <div className="packshot-container">
-            <div className="packshot-saffron"></div>
+            <img src="/1gramme.jpeg" alt="Safran 1 gramme" className="packshot-img" />
           </div>
           <div className="product-meta">
             <span className="coming-soon-badge">Bientôt Disponible</span>
@@ -232,7 +232,7 @@ const Products = () => (
         {/* PRODUIT 2G */}
         <div className="product-card">
           <div className="packshot-container">
-            <div className="packshot-saffron"></div>
+            <img src="/2grammes.jpeg" alt="Safran 2 grammes" className="packshot-img" />
           </div>
           <div className="product-meta">
             <span className="coming-soon-badge">Bientôt Disponible</span>
