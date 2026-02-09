@@ -161,7 +161,7 @@ const Home = () => (
       <div className="container text-center">
         <h2 className="section-title">Excellence Suisse et Origine Certifiée</h2>
         <p style={{maxWidth: '800px', margin: '0 auto', fontSize: '1.1rem', color: 'var(--color-text-light)'}}>
-          Basé en Suisse, Ebrahimi Group assure le lien direct entre les terroirs d'exception et le marché européen. 
+          Ebrahimi Group est une entreprise basée en Suisse, spécialisée dans l'importation, le conditionnement et la distribution de safran premium et de produits alimentaires secs.
           Nous garantissons une chaine de valeur éthique et une qualité constante pour nos clients exigeants.
         </p>
         <div className="features-grid">
