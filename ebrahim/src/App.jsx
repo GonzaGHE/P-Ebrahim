@@ -232,6 +232,29 @@ const Products = () => (
       <div className="text-center">
         <h1 className="section-title">Notre Collection</h1>
         <p className="section-subtitle">SAFRAN PREMIUM (GRADE 1) - EXCELLENCE SUISSE</p>
+        
+        {/* SHIPPING INFO BANNER */}
+        <div style={{
+          background: '#f9fbf7', 
+          border: '1px solid #e0e0e0', 
+          borderRadius: '4px',
+          padding: '20px', 
+          margin: '0 auto 40px', 
+          maxWidth: '600px',
+          fontSize: '0.95rem',
+          color: '#555'
+        }}>
+          <div style={{fontWeight: '600', color: 'var(--color-green)', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '1px'}}>
+            <Truck size={18} style={{marginBottom: '-4px', marginRight: '8px'}}/> Informations Livraison
+          </div>
+          <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'}}>
+              <ShieldCheck size={16} color="var(--color-gold)"/> <span>Livraison <strong>GRATUITE</strong> dès 39 CHF d'achat</span>
+            </div>
+            <div>• Frais de port : 12 CHF (si commande inférieure)</div>
+            <div>• Délai : 1 à 2 jours ouvrables</div>
+          </div>
+        </div>
       </div>
       
       <div className="product-grid">
