@@ -358,33 +358,36 @@ const Contact = () => {
     const PUBLIC_KEY = '36N88fav0oLsDc75W';
 
     // 1. Envoi au CLIENT (Confirmation) via sendForm
-    const clientEmail = emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_CLIENT, form.current, {
+    console.log('Sending Client Email...');
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_CLIENT, form.current, {
       publicKey: PUBLIC_KEY,
+    })
+    .then((result) => {
+        console.log('Client Email SENT:', result.text);
+        
+        // 2. Envoi à l'ADMIN (Notification) via send
+        // Seulement si le premier a réussi
+        console.log('Sending Admin Email...');
+        return emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, {
+            user_name: form.current.user_name.value,
+            user_email: form.current.user_email.value,
+            user_phone: form.current.user_phone.value,
+            subject: form.current.subject.value,
+            message: form.current.message.value,
+        }, {
+            publicKey: PUBLIC_KEY,
+        });
+    })
+    .then((result) => {
+        console.log('Admin Email SENT:', result.text);
+        setStatus('success');
+        form.current.reset();
+        setTimeout(() => setStatus(''), 5000); 
+    })
+    .catch((error) => {
+        setStatus('error');
+        console.error('FAILED...', error);
     });
-
-    // 2. Envoi à l'ADMIN (Notification) via send (plus robuste pour le double envoi)
-    const adminEmail = emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, {
-        user_name: form.current.user_name.value,
-        user_email: form.current.user_email.value,
-        user_phone: form.current.user_phone.value,
-        subject: form.current.subject.value,
-        message: form.current.message.value,
-    }, {
-        publicKey: PUBLIC_KEY,
-    });
-
-    Promise.all([clientEmail, adminEmail])
-      .then(
-        () => {
-          setStatus('success');
-          form.current.reset();
-          setTimeout(() => setStatus(''), 5000); 
-        },
-        (error) => {
-          setStatus('error');
-          console.error('FAILED...', error.text);
-        },
-      );
   };
 
   return (
