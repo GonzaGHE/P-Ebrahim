@@ -8,6 +8,8 @@ import logoImg from './assets/logo.png';
 import headerBg from './assets/header-bg.jpg';
 
 // --- UTILITAIRES ---
+console.log('--- APP VERSION 1.1 LOADED ---');
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
