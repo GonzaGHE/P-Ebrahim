@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { ShieldCheck, Truck, Leaf, Mail, MapPin, Phone, Menu, X } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 // Import Assets
 import logoImg from './assets/logo.png';
@@ -342,100 +343,143 @@ const B2B = () => (
   </section>
 );
 
-const Contact = () => (
-  <section className="container page-header-spacer">
-    <div className="text-center mb-40">
-      <h1 className="section-title">Prenons Contact</h1>
-      <p className="section-subtitle">UNE QUESTION ? UN PROJET ? NOUS SOMMES À VOTRE ÉCOUTE.</p>
-    </div>
+const Contact = () => {
+  const form = useRef();
+  const [status, setStatus] = useState(''); // '', 'sending', 'success', 'error'
 
-    <div className="contact-section-wrapper">
-      
-      {/* Panneau d'informations (Gauche) */}
-      <div className="contact-info-panel">
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    // REMPLACEZ CES VALEURS PAR LES VÔTRES DEPUIS EMAILJS DASHBOARD
+    const SERVICE_ID = 'service_720nydw'; 
+    const TEMPLATE_ID = 'template_4f7230g';
+    const PUBLIC_KEY = '36N88fav0oLsDc75W';
+
+    emailjs
+      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, {
+        publicKey: PUBLIC_KEY,
+      })
+      .then(
+        () => {
+          setStatus('success');
+          form.current.reset();
+          setTimeout(() => setStatus(''), 5000); // Clear success message after 5s
+        },
+        (error) => {
+          setStatus('error');
+          console.error('FAILED...', error.text);
+        },
+      );
+  };
+
+  return (
+    <section className="container page-header-spacer">
+      <div className="text-center mb-40">
+        <h1 className="section-title">Prenons Contact</h1>
+        <p className="section-subtitle">UNE QUESTION ? UN PROJET ? NOUS SOMMES À VOTRE ÉCOUTE.</p>
+      </div>
+
+      <div className="contact-section-wrapper">
         
-        <div className="contact-info-item">
-          <div className="contact-icon-box"><Phone size={24} color="var(--color-gold)"/></div>
-          <div className="contact-info-content">
-            <h4>Téléphone & WhatsApp</h4>
-            <p>+41 78 268 44 84</p>
-            <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Disponible 7j/7</p>
-          </div>
-        </div>
-
-        <div className="contact-info-item">
-          <div className="contact-icon-box"><Mail size={24} color="var(--color-gold)"/></div>
-          <div className="contact-info-content">
-            <h4>Email Professionnel</h4>
-            <p>info@ebrahimi-group.ch</p>
-            <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Réponse sous 24h</p>
-          </div>
-        </div>
-
-        <div className="contact-info-item">
-          <div className="contact-icon-box"><MapPin size={24} color="var(--color-gold)"/></div>
-          <div className="contact-info-content">
-            <h4>Siège Social</h4>
-            <p>Suisse</p>
-            <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Livraison dans toute l'Europe</p>
-          </div>
-        </div>
-
-        <div style={{marginTop: '40px', paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.1)'}}>
-          <h4 style={{color: 'white', marginBottom: '15px'}}>Besoin d'un devis Pro ?</h4>
-          <p style={{color: '#aaa', fontSize: '0.9rem', marginBottom: '20px'}}>
-            Pour les restaurants et revendeurs, accédez à nos tarifs préférentiels.
-          </p>
-          <Link to="/b2b" className="btn btn-outline" style={{width: '100%'}}>Espace Professionnel</Link>
-        </div>
-
-      </div>
-
-      {/* Formulaire (Droite) */}
-      <div className="contact-form-panel">
-        <h3 style={{marginBottom: '30px', fontFamily: 'var(--font-heading)'}}>Envoyez-nous un message</h3>
-        <form className="contact-form">
-          <div className="form-row-split">
-            <div className="form-group">
-              <label>Prénom / Nom</label>
-              <input type="text" required placeholder="Votre nom" />
-            </div>
-            <div className="form-group">
-              <label>Téléphone</label>
-              <input type="tel" placeholder="+41 ..." />
-            </div>
-          </div>
+        {/* Panneau d'informations (Gauche) */}
+        <div className="contact-info-panel">
           
-          <div className="form-group">
-            <label>Email Professionnel</label>
-            <input type="email" required placeholder="nom@entreprise.com" />
+          <div className="contact-info-item">
+            <div className="contact-icon-box"><Phone size={24} color="var(--color-gold)"/></div>
+            <div className="contact-info-content">
+              <h4>Téléphone & WhatsApp</h4>
+              <p>+41 78 268 44 84</p>
+              <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Disponible 7j/7</p>
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Objet de la demande</label>
-            <select>
-              <option>Sélectionnez un sujet...</option>
-              <option>Demande de tarifs (Pro)</option>
-              <option>Commande Particulier</option>
-              <option>Information Produit</option>
-              <option>Presse & Partenariat</option>
-            </select>
+          <div className="contact-info-item">
+            <div className="contact-icon-box"><Mail size={24} color="var(--color-gold)"/></div>
+            <div className="contact-info-content">
+              <h4>Email Professionnel</h4>
+              <p>info@ebrahimi-group.ch</p>
+              <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Réponse sous 24h</p>
+            </div>
           </div>
 
-          <div className="form-group">
-            <label>Votre Message</label>
-            <textarea rows="5" required placeholder="Comment pouvons-nous vous aider ?"></textarea>
+          <div className="contact-info-item">
+            <div className="contact-icon-box"><MapPin size={24} color="var(--color-gold)"/></div>
+            <div className="contact-info-content">
+              <h4>Siège Social</h4>
+              <p>Suisse</p>
+              <p style={{fontSize: '0.85rem', opacity: 0.7, marginTop: '5px'}}>Livraison dans toute l'Europe</p>
+            </div>
           </div>
 
-          <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '10px'}}>
-            Envoyer ma demande
-          </button>
-        </form>
+          <div style={{marginTop: '40px', paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.1)'}}>
+            <h4 style={{color: 'white', marginBottom: '15px'}}>Besoin d'un devis Pro ?</h4>
+            <p style={{color: '#aaa', fontSize: '0.9rem', marginBottom: '20px'}}>
+              Pour les restaurants et revendeurs, accédez à nos tarifs préférentiels.
+            </p>
+            <Link to="/b2b" className="btn btn-outline" style={{width: '100%'}}>Espace Professionnel</Link>
+          </div>
+
+        </div>
+
+        {/* Formulaire (Droite) */}
+        <div className="contact-form-panel">
+          <h3 style={{marginBottom: '30px', fontFamily: 'var(--font-heading)'}}>Envoyez-nous un message</h3>
+          
+          <form className="contact-form" ref={form} onSubmit={sendEmail}>
+            <div className="form-row-split">
+              <div className="form-group">
+                <label>Prénom / Nom</label>
+                <input type="text" name="user_name" required placeholder="Votre nom" />
+              </div>
+              <div className="form-group">
+                <label>Téléphone</label>
+                <input type="tel" name="user_phone" placeholder="+41 ..." />
+              </div>
+            </div>
+            
+            <div className="form-group">
+              <label>Email Professionnel</label>
+              <input type="email" name="user_email" required placeholder="nom@entreprise.com" />
+            </div>
+
+            <div className="form-group">
+              <label>Objet de la demande</label>
+              <select name="subject">
+                <option value="Autre">Sélectionnez un sujet...</option>
+                <option value="Demande de tarifs (Pro)">Demande de tarifs (Pro)</option>
+                <option value="Commande Particulier">Commande Particulier</option>
+                <option value="Information Produit">Information Produit</option>
+                <option value="Presse & Partenariat">Presse & Partenariat</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label>Votre Message</label>
+              <textarea rows="5" name="message" required placeholder="Comment pouvons-nous vous aider ?"></textarea>
+            </div>
+
+            <button type="submit" className="btn btn-primary" style={{width: '100%', marginTop: '10px'}} disabled={status === 'sending'}>
+              {status === 'sending' ? 'Envoi en cours...' : 'Envoyer ma demande'}
+            </button>
+
+            {status === 'success' && (
+              <p style={{color: 'green', marginTop: '10px', fontSize: '0.9rem', textAlign: 'center'}}>
+                Message envoyé avec succès ! Nous vous répondrons bientôt.
+              </p>
+            )}
+            {status === 'error' && (
+              <p style={{color: 'red', marginTop: '10px', fontSize: '0.9rem', textAlign: 'center'}}>
+                Une erreur est survenue. Veuillez nous contacter par email ou téléphone.
+              </p>
+            )}
+          </form>
+        </div>
+
       </div>
-
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 
 
