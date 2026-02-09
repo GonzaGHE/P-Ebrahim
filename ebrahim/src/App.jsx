@@ -177,7 +177,9 @@ const Home = () => (
 const About = () => (
   <section className="section-commitment">
     <div className="container">
-      <div className="commitment-header text-center">
+      
+      {/* Notre Engagement */}
+      <div className="commitment-header text-center mb-40">
         <h1 className="section-title">Notre Engagement</h1>
         <p className="lead-text">
           Chez Ebrahimi Group, nous croyons qu’un produit de qualité commence par le respect de l’humain et du travail agricole.
@@ -186,12 +188,35 @@ const About = () => (
       
       <div className="commitment-wrapper">
         <div className="commitment-text">
+           
+           {/* Histoire */}
+           <h3 className="text-gold" style={{marginBottom: '20px', fontFamily: 'var(--font-heading)'}}>Notre Histoire</h3>
            <p>
-            Nous collaborons avec des producteurs agricoles sélectionnés, notamment en <strong>Afghanistan</strong>, et soutenons indirectement l’activité de femmes engagées dans les étapes de récolte et de transformation, contribuant ainsi à une économie locale plus stable.
-          </p>
-           <p>
-            Pour nous, la qualité du produit final est indissociable de la qualité de vie de ceux qui le cultivent.
+            Né en Afghanistan et installé en Suisse, notre fondateur connaît à la fois la richesse agricole du pays d’origine et les exigences élevées du marché suisse.
+            <br/>
+            Ebrahimi Group est né d’une vision simple : offrir un safran authentique, éthique et d’une qualité irréprochable.
            </p>
+
+           <div style={{width: '60px', height: '2px', background: 'var(--color-gold)', margin: '40px auto', opacity: 0.5}}></div>
+
+           {/* Producteurs */}
+           <h3 className="text-gold" style={{marginBottom: '20px', fontFamily: 'var(--font-heading)'}}>Nos Producteurs</h3>
+           <p>
+            Nous collaborons avec des producteurs sélectionnés en Afghanistan.
+            <br/>
+            Nous soutenons également l’activité de femmes engagées dans les étapes de récolte et de transformation, renforçant l’économie locale.
+           </p>
+
+           <div style={{width: '60px', height: '2px', background: 'var(--color-gold)', margin: '40px auto', opacity: 0.5}}></div>
+
+           {/* Philosophie */}
+           <h3 className="text-gold" style={{marginBottom: '20px', fontFamily: 'var(--font-heading)'}}>Notre Philosophie</h3>
+           <p>
+            Pour nous, la qualité du produit final dépend de la qualité de vie de ceux qui le cultivent.
+            <br/>
+            Chaque filament reflète un savoir-faire, une tradition et un profond respect de la terre.
+           </p>
+
         </div>
       </div>
     </div>
