@@ -484,21 +484,23 @@ const Contact = () => {
 
 
 // --- APP ---
-function App() {
+const App = () => {
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router basename="/">
       <ScrollToTop />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/b2b" element={<B2B />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-      <Footer />
+      <div className="app-container">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/b2b" element={<B2B />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </div>
     </Router>
   );
-}
+};
 
 export default App;
