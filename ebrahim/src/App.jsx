@@ -239,7 +239,7 @@ const Products = () => (
             <img src="/1gramme.jpeg" alt="Safran 1 gramme" className="packshot-img" />
           </div>
           <div className="product-meta">
-            <span className="coming-soon-badge">Bientôt Disponible</span>
+
             <h3 className="product-title">Éclat de Safran - 1g</h3>
             <p className="product-desc">L'excellence pour votre cuisine quotidienne. <br/>Pureté certifiée ISO 3632.</p>
             
@@ -267,7 +267,7 @@ const Products = () => (
             <img src="/2grammes.jpeg" alt="Safran 2 grammes" className="packshot-img" />
           </div>
           <div className="product-meta">
-            <span className="coming-soon-badge">Bientôt Disponible</span>
+
             <h3 className="product-title">Trésor de Safran - 2g</h3>
             <p className="product-desc">Le format idéal pour les connaisseurs. <br/>Arôme intense et couleur profonde.</p>
             
