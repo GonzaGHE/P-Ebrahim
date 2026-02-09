@@ -112,7 +112,7 @@ img { max-width: 100%; display: block; }
 
 /* Typographie */
 h1, h2, h3, h4 { margin-top: 0; letter-spacing: -0.01em; font-family: var(--font-heading); color: var(--color-black); }
-h1 { font-size: 3rem; line-height: 1.1; font-weight: 700; }
+h1 { font-size: 3rem; line-height: 1.1; font-weight: 700;}
 h2 { font-size: 2.2rem; margin-bottom: 2rem; }
 h3 { font-size: 1.5rem; font-weight: 600; }
 
