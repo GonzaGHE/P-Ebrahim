@@ -14,34 +14,7 @@ function ScrollToTop() {
   return null;
 }
 
-// ... (skipping unchanged parts) ...
 
-    // 1. Envoi au CLIENT (Confirmation) via sendForm
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_CLIENT, form.current, {
-      publicKey: PUBLIC_KEY,
-    })
-    .then(() => {
-        // 2. Envoi à l'ADMIN (Notification) via send
-        // Seulement si le premier a réussi
-        return emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, {
-            user_name: form.current.user_name.value,
-            user_email: form.current.user_email.value,
-            user_phone: form.current.user_phone.value,
-            subject: form.current.subject.value,
-            message: form.current.message.value,
-        }, {
-            publicKey: PUBLIC_KEY,
-        });
-    })
-    .then(() => {
-        setStatus('success');
-        form.current.reset();
-        setTimeout(() => setStatus(''), 5000); 
-    })
-    .catch((error) => {
-        setStatus('error');
-        console.error('FAILED...', error);
-    });
 
 // --- COMPOSANTS FIXES ---
 const Navbar = () => {
@@ -387,16 +360,12 @@ const Contact = () => {
     const PUBLIC_KEY = '36N88fav0oLsDc75W';
 
     // 1. Envoi au CLIENT (Confirmation) via sendForm
-    console.log('Sending Client Email...');
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID_CLIENT, form.current, {
       publicKey: PUBLIC_KEY,
     })
-    .then((result) => {
-        console.log('Client Email SENT:', result.text);
-        
+    .then(() => {
         // 2. Envoi à l'ADMIN (Notification) via send
         // Seulement si le premier a réussi
-        console.log('Sending Admin Email...');
         return emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, {
             user_name: form.current.user_name.value,
             user_email: form.current.user_email.value,
@@ -407,8 +376,7 @@ const Contact = () => {
             publicKey: PUBLIC_KEY,
         });
     })
-    .then((result) => {
-        console.log('Admin Email SENT:', result.text);
+    .then(() => {
         setStatus('success');
         form.current.reset();
         setTimeout(() => setStatus(''), 5000); 
