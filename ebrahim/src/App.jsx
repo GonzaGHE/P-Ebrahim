@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { ShieldCheck, Truck, Leaf, Mail, MapPin, Phone, Menu, X } from 'lucide-react';
+import { ShieldCheck, Truck, Leaf, Mail, MapPin, Phone, Menu, X, Brain, Smile, Moon, Heart, Zap, Utensils, Scale, Info } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 // Import Assets
@@ -52,9 +52,11 @@ const Navbar = () => {
           <div className="nav-links desktop-only">
             <Link to="/">Accueil</Link>
             <Link to="/about">À Propos</Link>
+            <Link to="/benefits">Les Bienfaits</Link>
             <Link to="/products">Nos Produits</Link>
             <Link to="/contact">Contact</Link>
           </div>
+
 
           {/* Mobile Menu Button */}
           <button className="mobile-menu-btn" onClick={() => setIsOpen(!isOpen)}>
@@ -65,6 +67,7 @@ const Navbar = () => {
           <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
             <Link to="/">Accueil</Link>
             <Link to="/about">À Propos</Link>
+            <Link to="/benefits">Les Bienfaits</Link>
             <Link to="/products">Nos Produits</Link>
             <Link to="/b2b">Espace Pro</Link>
             <Link to="/contact">Contact</Link>
@@ -93,6 +96,7 @@ const Footer = () => (
           <h4 className="footer-title">Navigation</h4>
           <ul className="footer-links">
             <li><Link to="/">Accueil</Link></li>
+            <li><Link to="/benefits">Les Bienfaits</Link></li>
             <li><Link to="/products">Nos Produits</Link></li>
             <li><Link to="/b2b">Espace Pro</Link></li>
             <li><Link to="/contact">Contact</Link></li>
@@ -261,13 +265,13 @@ const Products = () => (
         {/* PRODUIT 1G */}
           <div className="product-card">
           <div className="packshot-container">
-            <img src="/1gramme.jpeg" alt="Safran 1 gramme" className="packshot-img" />
+            {/* <img src="/1gramme.jpeg" alt="Safran 1 gramme" className="packshot-img" /> */}
           </div>
           <div className="product-meta">
 
             <h3 className="product-title">Éclat de Safran - 1g</h3>
             <div style={{fontSize: '1.4rem', color: 'var(--color-gold)', fontWeight: '600', marginBottom: '10px', fontFamily: 'var(--font-heading)'}}>
-              15.90 CHF
+              Bientôt disponible
             </div>
             <p className="product-desc">L'excellence pour votre cuisine quotidienne. <br/>Pureté certifiée ISO 3632.</p>
             
@@ -276,29 +280,19 @@ const Products = () => (
               <li>• Grade 1 (ISO 3632)</li>
               <li>• Origine : Afghanistan, Herat</li>
             </ul>
-
-            <a href="mailto:info@ebrahimi-group.ch?subject=Commande%20Safran%201g" 
-               className="btn btn-luxury">
-               <Mail size={16} style={{marginRight: '8px'}}/> COMMANDER PAR EMAIL
-            </a>
-            <a href="https://wa.me/41782684484?text=Bonjour,%20je%20souhaite%20commander%20l'Éclat%20de%20Safran%20(1g)" 
-               target="_blank" rel="noopener noreferrer" 
-               className="link-discrete">
-               <Phone size={14} /> ou via WhatsApp
-            </a>
           </div>
         </div>
 
         {/* PRODUIT 2G */}
         <div className="product-card">
           <div className="packshot-container">
-            <img src="/2grammes.jpeg" alt="Safran 2 grammes" className="packshot-img" />
+            {/* <img src="/2grammes.jpeg" alt="Safran 2 grammes" className="packshot-img" /> */}
           </div>
           <div className="product-meta">
 
             <h3 className="product-title">Trésor de Safran - 2g</h3>
             <div style={{fontSize: '1.4rem', color: 'var(--color-gold)', fontWeight: '600', marginBottom: '10px', fontFamily: 'var(--font-heading)'}}>
-              29.90 CHF
+              Bientôt disponible
             </div>
             <p className="product-desc">Le format idéal pour les connaisseurs. <br/>Arôme intense et couleur profonde.</p>
             
@@ -307,16 +301,6 @@ const Products = () => (
               <li>• Grade 1 (ISO 3632)</li>
               <li>• Origine : Afghanistan, Herat</li>
             </ul>
-
-            <a href="mailto:info@ebrahimi-group.ch?subject=Commande%20Safran%202g" 
-               className="btn btn-luxury">
-               <Mail size={16} style={{marginRight: '8px'}}/> COMMANDER PAR EMAIL
-            </a>
-            <a href="https://wa.me/41782684484?text=Bonjour,%20je%20souhaite%20commander%20le%20Trésor%20de%20Safran%20(2g)" 
-               target="_blank" rel="noopener noreferrer" 
-               className="link-discrete">
-               <Phone size={14} /> ou via WhatsApp
-            </a>
           </div>
         </div>
       </div>
@@ -526,6 +510,150 @@ const Contact = () => {
 
 
 
+const Benefits = () => (
+  <section className="container page-header-spacer">
+    <div className="text-center mb-40">
+      <h1 className="section-title">Les Bienfaits du Safran</h1>
+      <p className="section-subtitle">L’EXCELLENCE NATURELLE AU SERVICE DU BIEN-ÊTRE</p>
+    </div>
+    
+    <div style={{maxWidth: '800px', margin: '0 auto'}}>
+        <p style={{marginBottom: '40px', fontSize: '1.1rem', lineHeight: '1.6'}}>
+            Le safran est reconnu depuis l’Antiquité pour sa rareté, son intensité aromatique et ses propriétés naturelles.
+            Riche en composés bioactifs tels que la crocin et le safranal, il est aujourd’hui étudié pour son intérêt dans le soutien du bien-être global.
+            <br/><br/>
+            Chez Ebrahimi Group, nous sélectionnons un safran pur en filaments, garantissant une concentration optimale en principes actifs.
+        </p>
+
+        <div className="benefits-list" style={{display: 'flex', flexDirection: 'column', gap: '30px'}}>
+            
+            {/* 1 */}
+            <div>
+                <h3 className="text-gold" style={{fontFamily: 'var(--font-heading)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <Brain size={24} /> 1. Soutien de l’équilibre émotionnel
+                </h3>
+                <p>
+                    Le safran est étudié pour son influence positive sur l’humeur.
+                    Certaines recherches suggèrent qu’il peut contribuer au maintien d’un équilibre émotionnel, notamment en période de fatigue mentale ou de stress prolongé.
+                </p>
+            </div>
+
+            {/* 2 */}
+            <div>
+                <h3 className="text-gold" style={{fontFamily: 'var(--font-heading)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <Smile size={24} /> 2. Gestion naturelle du stress
+                </h3>
+                <p>
+                    Grâce à ses composés aromatiques, le safran est associé à une sensation de détente.
+                    Il peut accompagner les phases de tension quotidienne en favorisant un état de calme intérieur.
+                </p>
+            </div>
+
+            {/* 3 */}
+            <div>
+                <h3 className="text-gold" style={{fontFamily: 'var(--font-heading)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <Moon size={24} /> 3. Relaxation et qualité du sommeil
+                </h3>
+                <p>
+                    Le safran est traditionnellement utilisé pour favoriser la relaxation en fin de journée.
+                    Une meilleure détente peut contribuer indirectement à un sommeil plus régulier.
+                </p>
+            </div>
+
+            {/* 4 */}
+            <div>
+                <h3 className="text-gold" style={{fontFamily: 'var(--font-heading)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <ShieldCheck size={24} /> 4. Puissant pouvoir antioxydant
+                </h3>
+                <p>
+                    La crocin, pigment naturel responsable de la couleur rouge intense, possède une activité antioxydante reconnue.
+                    Les antioxydants contribuent à protéger les cellules contre le stress oxydatif, impliqué dans le vieillissement cellulaire.
+                </p>
+            </div>
+
+            {/* 5 */}
+            <div>
+                <h3 className="text-gold" style={{fontFamily: 'var(--font-heading)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <Heart size={24} /> 5. Soutien cardiovasculaire
+                </h3>
+                <p>
+                    Intégré dans une alimentation équilibrée, le safran peut participer au maintien d’un bon fonctionnement général du système cardiovasculaire grâce à son profil antioxydant.
+                </p>
+            </div>
+
+            {/* 6 */}
+            <div>
+                <h3 className="text-gold" style={{fontFamily: 'var(--font-heading)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <Zap size={24} /> 6. Concentration et clarté mentale
+                </h3>
+                <p>
+                    Des études explorent l’effet potentiel du safran sur les fonctions cognitives.
+                    Il peut soutenir la concentration et la vigilance mentale dans un mode de vie actif.
+                </p>
+            </div>
+
+            {/* 7 */}
+            <div>
+                <h3 className="text-gold" style={{fontFamily: 'var(--font-heading)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                    <Utensils size={24} /> 7. Confort digestif
+                </h3>
+                <p>
+                    Traditionnellement utilisé après les repas, le safran peut contribuer au confort digestif et à l’équilibre gastronomique.
+                </p>
+            </div>
+
+        </div>
+
+        {/* Utilisation */}
+        <div style={{marginTop: '50px', padding: '30px', backgroundColor: '#f9fbf7', borderRadius: '8px'}}>
+            <h3 className="text-green" style={{fontFamily: 'var(--font-heading)', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                <Leaf size={24} /> Utilisation recommandée
+            </h3>
+            <ul style={{listStyle: 'disc', paddingLeft: '20px', color: '#555'}}>
+                <li style={{marginBottom: '10px'}}>5 à 10 filaments en infusion dans de l’eau chaude (non bouillante) pendant 10 minutes</li>
+                <li>À intégrer dans les préparations culinaires après infusion préalable</li>
+            </ul>
+        </div>
+
+        {/* Engagement */}
+        <div style={{marginTop: '30px', padding: '30px', border: '1px solid var(--color-gold)', borderRadius: '8px'}}>
+            <h3 className="text-gold" style={{fontFamily: 'var(--font-heading)', marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px'}}>
+                <Scale size={24} /> Engagement Qualité – Ebrahimi Group
+            </h3>
+            <ul style={{listStyle: 'none', padding: 0, color: '#555'}}>
+                <li style={{marginBottom: '5px'}}>• Safran pur en filaments</li>
+                <li style={{marginBottom: '5px'}}>• Sélection rigoureuse</li>
+                <li>• Traçabilité</li>
+            </ul>
+        </div>
+
+        {/* Disclaimer */}
+        <div style={{
+            marginTop: '40px', 
+            marginBottom: '80px',
+            padding: '20px', 
+            backgroundColor: '#fff8e1', 
+            borderLeft: '4px solid #ffc107', 
+            borderRadius: '4px',
+            color: '#795548',
+            display: 'flex',
+            gap: '15px',
+            alignItems: 'start'
+        }}>
+            <Info size={24} style={{marginTop: '2px', flexShrink: 0}} />
+            <div>
+                <strong style={{display: 'block', marginBottom: '5px', textTransform: 'uppercase', fontSize: '0.9rem'}}>Mention informative</strong>
+                <p style={{fontSize: '0.95rem', margin: 0, lineHeight: '1.5'}}>
+                    Les informations présentées sont données à titre informatif et ne constituent pas des allégations médicales.
+                    En cas de traitement médical, grossesse ou condition particulière, demander conseil à un professionnel de santé.
+                </p>
+            </div>
+        </div>
+
+    </div>
+  </section>
+);
+
 // --- APP ---
 const App = () => {
   return (
@@ -536,6 +664,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/benefits" element={<Benefits />} />
           <Route path="/products" element={<Products />} />
           <Route path="/b2b" element={<B2B />} />
           <Route path="/contact" element={<Contact />} />
