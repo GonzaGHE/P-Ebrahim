@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { ShieldCheck, Truck, Leaf, Mail, MapPin, Phone, Menu, X, Brain, Smile, Moon, Heart, Zap, Utensils, Scale, Info } from 'lucide-react';
+import { ShieldCheck, Truck, Leaf, Mail, MapPin, Phone, Menu, X, Brain, Smile, Moon, Heart, Zap, Utensils, Scale, Info, Award, Check } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 // Import Assets
@@ -202,6 +202,29 @@ const About = () => (
             Né en Afghanistan et installé en Suisse, notre fondateur connaît à la fois la richesse agricole du pays d’origine et les exigences élevées du marché suisse.
             <br/>
             Ebrahimi Group est né d’une vision simple : offrir un safran authentique, éthique et d’une qualité irréprochable.
+           </p>
+
+           <div style={{width: '60px', height: '2px', background: 'var(--color-gold)', margin: '40px auto', opacity: 0.5}}></div>
+
+           {/* Safran Premium */}
+           <h3 className="text-gold" style={{marginBottom: '20px', fontFamily: 'var(--font-heading)', display: 'flex', alignItems: 'center', gap: '10px'}}>
+             <Award size={28} /> Safran Premium – Qualité Supérieure d’Herat, Afghanistan
+           </h3>
+           <p>
+            <strong>Pour les exigences les plus élevées</strong>
+            <br/><br/>
+            Le safran Ebrahimi Group provient des hautes terres ensoleillées d’Herat, une région reconnue mondialement comme l’un des berceaux historiques du safran de qualité supérieure. Récolté à la main, brin par brin, notre safran ne contient que les pistils entiers issus de la partie la plus aromatique du Crocus Sativus.
+            <br/><br/>
+            Séché lentement selon une méthode traditionnelle et contrôlée, il se distingue par :
+           </p>
+           <ul style={{listStyle: 'none', paddingLeft: 0, marginTop: '10px', marginBottom: '15px'}}>
+             <li style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}><Check size={18} className="text-gold"/> une couleur rouge intense,</li>
+             <li style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}><Check size={18} className="text-gold"/> un parfum riche et épicé,</li>
+             <li style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}><Check size={18} className="text-gold"/> une puissance aromatique exceptionnelle,</li>
+             <li style={{display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px'}}><Check size={18} className="text-gold"/> une pureté garantie sans additifs, ni colorants, ni conservateurs.</li>
+           </ul>
+           <p>
+            Grâce à sa forte teneur en crocine, picrocrocine et safranal, notre safran développe une couleur brillante, une saveur subtile et un arôme unique, idéal pour enrichir vos recettes de riz, vos thés, vos desserts, vos bouillons et vos plats raffinés.
            </p>
 
            <div style={{width: '60px', height: '2px', background: 'var(--color-gold)', margin: '40px auto', opacity: 0.5}}></div>
