@@ -689,7 +689,7 @@ const B2B = () => (
             Produits et Services
           </h4>
           <ul>
-            <li>• Vente en vrac (dès 100g)</li>
+            <li>• Vente en vrac (dès 10g)</li>
             {/* Removed Conditionnement & Documentation */}
           </ul>
         </div>
