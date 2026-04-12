@@ -554,22 +554,22 @@ const Products = () => (
 
       <div className="product-grid">
         {/* PRODUIT 1G */}
-        <div className="product-card">
+        <Link to="/contact" className="product-card">
           <div className="packshot-container">
-            {/* <img src="/1gramme.jpeg" alt="Safran 1 gramme" className="packshot-img" /> */}
+            <img src="/1gramme.webp" alt="Safran 1 gramme" className="packshot-img" />
           </div>
           <div className="product-meta">
             <h3 className="product-title">Éclat de Safran - 1g</h3>
             <div
               style={{
-                fontSize: "1.4rem",
+                fontSize: "1.8rem",
                 color: "var(--color-gold)",
-                fontWeight: "600",
+                fontWeight: "700",
                 marginBottom: "10px",
                 fontFamily: "var(--font-heading)",
               }}
             >
-              Bientôt disponible
+              16.90 CHF
             </div>
             <p className="product-desc">
               L'excellence pour votre cuisine quotidienne. <br />
@@ -590,26 +590,30 @@ const Products = () => (
               <li>• Grade 1 (ISO 3632)</li>
               <li>• Origine : Afghanistan, Herat</li>
             </ul>
+
+            <div className="btn btn-primary" style={{ marginTop: "10px", width: "100%" }}>
+              Commander <Mail size={16} />
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* PRODUIT 2G */}
-        <div className="product-card">
+        <Link to="/contact" className="product-card">
           <div className="packshot-container">
-            {/* <img src="/2grammes.jpeg" alt="Safran 2 grammes" className="packshot-img" /> */}
+            <img src="/2gramme.webp" alt="Safran 2 grammes" className="packshot-img" />
           </div>
           <div className="product-meta">
             <h3 className="product-title">Trésor de Safran - 2g</h3>
             <div
               style={{
-                fontSize: "1.4rem",
+                fontSize: "1.8rem",
                 color: "var(--color-gold)",
-                fontWeight: "600",
+                fontWeight: "700",
                 marginBottom: "10px",
                 fontFamily: "var(--font-heading)",
               }}
             >
-              Bientôt disponible
+              29.90 CHF
             </div>
             <p className="product-desc">
               Le format idéal pour les connaisseurs. <br />
@@ -630,8 +634,14 @@ const Products = () => (
               <li>• Grade 1 (ISO 3632)</li>
               <li>• Origine : Afghanistan, Herat</li>
             </ul>
+
+            <div className="btn btn-primary" style={{ marginTop: "10px", width: "100%" }}>
+              Commander <Mail size={16} />
+            </div>
           </div>
-        </div>
+        </Link>
+
+
       </div>
     </section>
 
