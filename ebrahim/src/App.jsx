@@ -25,6 +25,7 @@ import {
   Info,
   Award,
   Check,
+  Instagram,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
@@ -64,6 +65,14 @@ const Navbar = () => {
             <span>
               <Phone size={14} color="var(--color-green)" /> +41 78 268 44 84
             </span>
+            <a 
+              href="https://www.instagram.com/ebrahimigroup.ch/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: "white", textDecoration: "none", display: "flex", alignItems: "center", gap: "5px" }}
+            >
+              <Instagram size={14} color="var(--color-green)" /> Instagram
+            </a>
           </div>
           <div>
             <Link to="/b2b" className="top-bar-link">
@@ -165,6 +174,17 @@ const Footer = () => (
             <li>
               <Phone size={18} color="var(--color-gold)" />
               +41 78 268 44 84
+            </li>
+            <li>
+              <a 
+                href="https://www.instagram.com/ebrahimigroup.ch/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{ color: "inherit", textDecoration: "none", display: "flex", alignItems: "center", gap: "8px" }}
+              >
+                <Instagram size={18} color="var(--color-gold)" />
+                Instagram
+              </a>
             </li>
           </ul>
         </div>
@@ -832,6 +852,30 @@ const Contact = () => {
                 style={{ fontSize: "0.85rem", opacity: 0.7, marginTop: "5px" }}
               >
                 Livraison dans toute l'Europe
+              </p>
+            </div>
+          </div>
+
+          <div className="contact-info-item">
+            <div className="contact-icon-box">
+              <Instagram size={24} color="var(--color-gold)" />
+            </div>
+            <div className="contact-info-content">
+              <h4>Instagram</h4>
+              <p>
+                <a 
+                  href="https://www.instagram.com/ebrahimigroup.ch/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ color: "white", textDecoration: "none" }}
+                >
+                  @ebrahimigroup.ch
+                </a>
+              </p>
+              <p
+                style={{ fontSize: "0.85rem", opacity: 0.7, marginTop: "5px" }}
+              >
+                Suivez nos actualités
               </p>
             </div>
           </div>
