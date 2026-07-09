@@ -26,6 +26,8 @@ import {
   Award,
   Check,
   Instagram,
+  Briefcase,
+  User,
 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 
@@ -515,178 +517,324 @@ const About = () => (
   </section>
 );
 
-const Products = () => (
-  <div style={{ backgroundColor: "white" }} className="page-header-spacer">
-    <section className="container">
-      <div className="text-center">
-        <h1 className="section-title">Notre Collection</h1>
-        <p className="section-subtitle">
-          SAFRAN PREMIUM (GRADE 1) - EXCELLENCE SUISSE
-        </p>
+const productsData = [
+  {
+    id: "safran-1g",
+    title: "Éclat de Safran - 1g",
+    category: "safran",
+    image: "/1gramme.webp",
+    description: "L'excellence pour votre cuisine quotidienne. Pureté certifiée ISO 3632.",
+    specs: [
+      "Safran filaments entiers",
+      "Grade 1 (ISO 3632)",
+      "Origine : Afghanistan, Herat"
+    ],
+    pricing: {
+      particulier: {
+        price: "16.90 CHF",
+        unit: "le pot"
+      },
+      professionnel: {
+        text: "Tarifs adaptés à vos volumes de commande. Conditionnements professionnels disponibles (dès 10g).",
+        cta: "Demander un devis Pro"
+      }
+    }
+  },
+  {
+    id: "safran-2g",
+    title: "Trésor de Safran - 2g",
+    category: "safran",
+    image: "/2gramme.webp",
+    description: "Le format idéal pour les connaisseurs. Arôme intense et couleur profonde.",
+    specs: [
+      "Safran filaments entiers",
+      "Grade 1 (ISO 3632)",
+      "Origine : Afghanistan, Herat"
+    ],
+    pricing: {
+      particulier: {
+        price: "29.90 CHF",
+        unit: "le pot"
+      },
+      professionnel: {
+        text: "Tarifs adaptés à vos volumes de commande. Conditionnements professionnels disponibles (dès 10g).",
+        cta: "Demander un devis Pro"
+      }
+    }
+  },
+  {
+    id: "nutella-25g",
+    title: "Nutella® - 25g",
+    category: "epicerie",
+    image: "/nutella_25g.png",
+    description: "Le format individuel iconique en verre, idéal pour vos buffets, petits-déjeuners d'hôtel ou corbeilles d'accueil.",
+    specs: [
+      "Format individuel en verre (25g)",
+      "Parfait pour l'hôtellerie, restauration et traiteurs",
+      "Présentation soignée et hygiène garantie"
+    ],
+    pricing: {
+      particulier: {
+        tiers: [
+          { label: "1 pot (25 g)", price: "1.05 CHF" },
+          { label: "1 carton (64 pièces)", price: "56.00 CHF" }
+        ]
+      },
+      professionnel: {
+        text: "Vous êtes un professionnel ? Contactez-nous pour recevoir un devis personnalisé et bénéficier de tarifs adaptés à vos volumes d’achat.",
+        cta: "Demander un devis personnalisé"
+      }
+    }
+  }
+];
 
-        {/* SHIPPING INFO BANNER */}
-        <div
-          style={{
-            background: "#f9fbf7",
-            border: "1px solid #e0e0e0",
-            borderRadius: "4px",
-            padding: "20px",
-            margin: "0 auto 40px",
-            maxWidth: "600px",
-            fontSize: "0.95rem",
-            color: "#555",
-          }}
-        >
-          <div
+const Products = () => {
+  const [profile, setProfile] = useState("pro"); // 'pro' by default as per user request to emphasize pros
+  const [category, setCategory] = useState("all");
+
+  const filteredProducts = productsData.filter(
+    (product) => category === "all" || product.category === category
+  );
+
+  return (
+    <div style={{ backgroundColor: "white" }} className="page-header-spacer">
+      <section className="container" style={{ paddingBottom: "40px" }}>
+        <div className="text-center">
+          <h1 className="section-title">Notre Collection</h1>
+          <p className="section-subtitle">
+            DES PRODUITS D'EXCEPTION POUR PROFESSIONNELS ET PARTICULIERS
+          </p>
+
+          {/* Profile Switcher */}
+          <div className="profile-toggle-wrapper">
+            <span className="profile-toggle-intro">Sélectionnez votre espace :</span>
+            <div className="profile-toggle-container">
+              <button
+                className={`profile-toggle-btn ${profile === "pro" ? "active" : ""}`}
+                onClick={() => setProfile("pro")}
+              >
+                <Briefcase size={16} /> Espace Professionnel
+              </button>
+              <button
+                className={`profile-toggle-btn ${profile === "particulier" ? "active" : ""}`}
+                onClick={() => setProfile("particulier")}
+              >
+                <User size={16} /> Espace Particulier
+              </button>
+            </div>
+          </div>
+
+          {/* Professional Target Banner (Shown only when Professional profile is active) */}
+          {profile === "pro" && (
+            <div className="pro-target-banner">
+              <h3 className="pro-target-title">Partenaire des Métiers de la Bouche & de l'Hébergement</h3>
+              <div className="pro-target-sectors">
+                <span>Hôtels</span> • <span>Cafés</span> • <span>Restaurants</span> • <span>Boulangeries</span> • <span>Traiteurs</span> • <span>Entreprises</span> • <span>Revendeurs</span>
+              </div>
+              <p className="pro-target-desc">
+                Nous accompagnons les établissements exigeants en Suisse en leur fournissant des produits d'exception.
+                Bénéficiez de conditions d'achat adaptées à votre activité et de volumes flexibles.
+              </p>
+            </div>
+          )}
+
+          {/* Category Filters */}
+          <div className="category-filters-container">
+            <button
+              className={`category-filter-btn ${category === "all" ? "active" : ""}`}
+              onClick={() => setCategory("all")}
+            >
+              Tous les produits
+            </button>
+            <button
+              className={`category-filter-btn ${category === "safran" ? "active" : ""}`}
+              onClick={() => setCategory("safran")}
+            >
+              Safran d'exception
+            </button>
+            <button
+              className={`category-filter-btn ${category === "epicerie" ? "active" : ""}`}
+              onClick={() => setCategory("epicerie")}
+            >
+              Épicerie Fine
+            </button>
+          </div>
+
+          {/* SHIPPING INFO BANNER (Shown for particulars or general context) */}
+          {profile === "particulier" && (
+            <div
+              style={{
+                background: "#f9fbf7",
+                border: "1px solid #e0e0e0",
+                borderRadius: "4px",
+                padding: "20px",
+                margin: "0 auto 40px",
+                maxWidth: "600px",
+                fontSize: "0.95rem",
+                color: "#555",
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: "600",
+                  color: "var(--color-green)",
+                  marginBottom: "10px",
+                  textTransform: "uppercase",
+                  letterSpacing: "1px",
+                }}
+              >
+                <Truck
+                  size={18}
+                  style={{ marginBottom: "-4px", marginRight: "8px" }}
+                />{" "}
+                Informations Livraison
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                  }}
+                >
+                  <ShieldCheck size={16} color="var(--color-gold)" />{" "}
+                  <span>
+                    Livraison <strong>GRATUITE</strong> dès 39 CHF d'achat
+                  </span>
+                </div>
+                <div>• Frais de port : 12 CHF (si commande inférieure)</div>
+                <div>• Délai : 1 à 2 jours ouvrables</div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Dynamic Product Grid */}
+        <div className="product-grid">
+          {filteredProducts.map((product) => {
+            const isPro = profile === "pro";
+            const contactState = {
+              subject: isPro ? "Demande de tarifs (Pro)" : "Commande Particulier",
+              message: isPro
+                ? `Bonjour, je suis intéressé par votre produit "${product.title}" en tant que professionnel. J'aimerais recevoir un devis personnalisé pour mon établissement.\n\nType d'établissement : [Hôtel / Café / Restaurant / Boulangerie / Traiteur / Entreprise / Revendeur]\nVolume estimé : `
+                : `Bonjour, je souhaite commander le produit "${product.title}" en tant que particulier.\n\nQuantité souhaitée : \nAdresse de livraison : `
+            };
+
+            return (
+              <Link
+                key={product.id}
+                to="/contact"
+                state={contactState}
+                className="product-card"
+              >
+                <div className="packshot-container">
+                  <img src={product.image} alt={product.title} className="packshot-img" />
+                </div>
+                <div className="product-meta">
+                  <h3 className="product-title">{product.title}</h3>
+
+                  <ul
+                    style={{
+                      textAlign: "left",
+                      margin: "0 auto 20px",
+                      maxWidth: "90%",
+                      fontSize: "0.9rem",
+                      color: "#555",
+                      listStyle: "none",
+                      paddingLeft: 0,
+                    }}
+                  >
+                    {product.specs.map((spec, idx) => (
+                      <li key={idx} style={{ marginBottom: "5px" }}>
+                        • {spec}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="product-desc">{product.description}</p>
+
+                  <div className="pricing-container" style={{ marginTop: "20px" }}>
+                    {isPro ? (
+                      <div className="pro-pricing-view">
+                        <p className="pro-pricing-mention">
+                          {product.pricing.professionnel.text}
+                        </p>
+                        <div className="btn btn-primary" style={{ marginTop: "15px", width: "100%" }}>
+                          {product.pricing.professionnel.cta} <Mail size={16} />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="particulier-pricing-view">
+                        {product.pricing.particulier.price ? (
+                          <div
+                            style={{
+                              fontSize: "1.8rem",
+                              color: "var(--color-gold)",
+                              fontWeight: "700",
+                              marginBottom: "15px",
+                              fontFamily: "var(--font-heading)",
+                            }}
+                          >
+                            {product.pricing.particulier.price}
+                          </div>
+                        ) : (
+                          <div className="tiered-pricing-list" style={{ marginBottom: "15px" }}>
+                            {product.pricing.particulier.tiers.map((tier, idx) => (
+                              <div
+                                key={idx}
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "space-between",
+                                  padding: "6px 0",
+                                  borderBottom: "1px dashed #eaeaea",
+                                  fontSize: "0.95rem",
+                                }}
+                              >
+                                <span style={{ fontWeight: "500", color: "#555" }}>{tier.label}</span>
+                                <span style={{ fontWeight: "700", color: "var(--color-gold)" }}>
+                                  {tier.price}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        <div className="btn btn-primary" style={{ width: "100%" }}>
+                          Commander <Mail size={16} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* BANNIERE B2B */}
+      <section>
+        <div className="b2b-banner">
+          <h2
             style={{
-              fontWeight: "600",
-              color: "var(--color-green)",
-              marginBottom: "10px",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
+              color: "white",
+              border: "none",
+              fontFamily: "var(--font-heading)",
             }}
           >
-            <Truck
-              size={18}
-              style={{ marginBottom: "-4px", marginRight: "8px" }}
-            />{" "}
-            Informations Livraison
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "8px",
-              }}
-            >
-              <ShieldCheck size={16} color="var(--color-gold)" />{" "}
-              <span>
-                Livraison <strong>GRATUITE</strong> dès 39 CHF d'achat
-              </span>
-            </div>
-            <div>• Frais de port : 12 CHF (si commande inférieure)</div>
-            <div>• Délai : 1 à 2 jours ouvrables</div>
-          </div>
+            Besoin d'un accompagnement spécifique ?
+          </h2>
+          <p style={{ fontSize: "1.2rem", marginBottom: "30px" }}>
+            Hôtels, restaurants, épiceries fines, grossistes et revendeurs. Découvrez notre espace pro dédié.
+          </p>
+          <Link to="/b2b" className="btn btn-primary">
+            Accéder à l'espace Pro
+          </Link>
         </div>
-      </div>
-
-      <div className="product-grid">
-        {/* PRODUIT 1G */}
-        <Link to="/contact" className="product-card">
-          <div className="packshot-container">
-            <img src="/1gramme.webp" alt="Safran 1 gramme" className="packshot-img" />
-          </div>
-          <div className="product-meta">
-            <h3 className="product-title">Éclat de Safran - 1g</h3>
-            <div
-              style={{
-                fontSize: "1.8rem",
-                color: "var(--color-gold)",
-                fontWeight: "700",
-                marginBottom: "10px",
-                fontFamily: "var(--font-heading)",
-              }}
-            >
-              16.90 CHF
-            </div>
-            <p className="product-desc">
-              L'excellence pour votre cuisine quotidienne. <br />
-              Pureté certifiée ISO 3632.
-            </p>
-
-            <ul
-              style={{
-                textAlign: "left",
-                margin: "0 auto 20px",
-                maxWidth: "80%",
-                fontSize: "0.9rem",
-                color: "#555",
-                listStyle: "none",
-              }}
-            >
-              <li>• Safran filaments entiers</li>
-              <li>• Grade 1 (ISO 3632)</li>
-              <li>• Origine : Afghanistan, Herat</li>
-            </ul>
-
-            <div className="btn btn-primary" style={{ marginTop: "10px", width: "100%" }}>
-              Commander <Mail size={16} />
-            </div>
-          </div>
-        </Link>
-
-        {/* PRODUIT 2G */}
-        <Link to="/contact" className="product-card">
-          <div className="packshot-container">
-            <img src="/2gramme.webp" alt="Safran 2 grammes" className="packshot-img" />
-          </div>
-          <div className="product-meta">
-            <h3 className="product-title">Trésor de Safran - 2g</h3>
-            <div
-              style={{
-                fontSize: "1.8rem",
-                color: "var(--color-gold)",
-                fontWeight: "700",
-                marginBottom: "10px",
-                fontFamily: "var(--font-heading)",
-              }}
-            >
-              29.90 CHF
-            </div>
-            <p className="product-desc">
-              Le format idéal pour les connaisseurs. <br />
-              Arôme intense et couleur profonde.
-            </p>
-
-            <ul
-              style={{
-                textAlign: "left",
-                margin: "0 auto 20px",
-                maxWidth: "80%",
-                fontSize: "0.9rem",
-                color: "#555",
-                listStyle: "none",
-              }}
-            >
-              <li>• Safran filaments entiers</li>
-              <li>• Grade 1 (ISO 3632)</li>
-              <li>• Origine : Afghanistan, Herat</li>
-            </ul>
-
-            <div className="btn btn-primary" style={{ marginTop: "10px", width: "100%" }}>
-              Commander <Mail size={16} />
-            </div>
-          </div>
-        </Link>
-
-
-      </div>
-    </section>
-
-    {/* BANNIERE B2B */}
-    <section>
-      <div className="b2b-banner">
-        <h2
-          style={{
-            color: "white",
-            border: "none",
-            fontFamily: "var(--font-heading)",
-          }}
-        >
-          Vous êtes un professionnel ?
-        </h2>
-        <p style={{ fontSize: "1.2rem", marginBottom: "30px" }}>
-          Restaurants, Épiceries fines et Industrie. Tarifs préférentiels.
-        </p>
-        <Link to="/b2b" className="btn btn-primary">
-          Accéder à l'espace Pro
-        </Link>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+    </div>
+  );
+};
 
 const B2B = () => (
   <section className="container">
@@ -754,6 +902,20 @@ const B2B = () => (
 const Contact = () => {
   const form = useRef();
   const [status, setStatus] = useState(""); // '', 'sending', 'success', 'error'
+  const location = useLocation();
+  const [subject, setSubject] = useState("Autre");
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    if (location.state) {
+      if (location.state.subject) {
+        setSubject(location.state.subject);
+      }
+      if (location.state.message) {
+        setMessage(location.state.message);
+      }
+    }
+  }, [location]);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -947,7 +1109,7 @@ const Contact = () => {
 
             <div className="form-group">
               <label>Objet de la demande</label>
-              <select name="subject">
+              <select name="subject" value={subject} onChange={(e) => setSubject(e.target.value)}>
                 <option value="Autre">Sélectionnez un sujet...</option>
                 <option value="Demande de tarifs (Pro)">
                   Demande de tarifs (Pro)
@@ -969,6 +1131,8 @@ const Contact = () => {
                 name="message"
                 required
                 placeholder="Comment pouvons-nous vous aider ?"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               ></textarea>
             </div>
 

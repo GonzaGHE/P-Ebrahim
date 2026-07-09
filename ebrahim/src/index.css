@@ -885,3 +885,184 @@ footer {
   }
   input, select, textarea { font-size: 16px !important; } /* Évite le zoom auto sur iOS */
 }
+
+/* --- NOUVEAUX STYLES PAGE PRODUITS (MULTI-PRODUITS, PRO/PARTICULIER) --- */
+
+/* Profile Switcher */
+.profile-toggle-wrapper {
+  margin: 30px auto 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-toggle-intro {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.profile-toggle-container {
+  display: inline-flex;
+  background-color: var(--color-off-white);
+  border: 1px solid rgba(85, 107, 47, 0.15);
+  padding: 4px;
+  border-radius: 30px;
+  box-shadow: var(--shadow-soft);
+}
+
+.profile-toggle-btn {
+  background: none;
+  border: none;
+  padding: 10px 22px;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-toggle-btn.active {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  box-shadow: 0 4px 10px rgba(85, 107, 47, 0.2);
+}
+
+.profile-toggle-btn:not(.active):hover {
+  color: var(--color-green);
+}
+
+/* Banner Cible Professionnelle */
+.pro-target-banner {
+  background: linear-gradient(135deg, var(--color-off-white) 0%, rgba(197, 160, 89, 0.05) 100%);
+  border-left: 4px solid var(--color-gold);
+  border-right: 4px solid var(--color-gold);
+  padding: 30px 40px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  border-radius: var(--radius-std);
+  box-shadow: var(--shadow-soft);
+  animation: fadeUp 0.6s ease-out;
+}
+
+.pro-target-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--color-green-dark);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.pro-target-sectors {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pro-target-sectors span {
+  padding: 2px 6px;
+  background-color: rgba(197, 160, 89, 0.1);
+  border-radius: 2px;
+}
+
+.pro-target-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Category Filters */
+.category-filters-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 0 auto 50px;
+  flex-wrap: wrap;
+}
+
+.category-filter-btn {
+  background-color: transparent;
+  border: 1px solid #eaeaea;
+  padding: 10px 20px;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border-radius: var(--radius-std);
+  color: var(--color-text-light);
+  transition: all 0.3s ease;
+}
+
+.category-filter-btn.active {
+  border-color: var(--color-gold);
+  background-color: var(--color-gold);
+  color: white;
+  box-shadow: 0 4px 10px rgba(197, 160, 89, 0.15);
+}
+
+.category-filter-btn:not(.active):hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* Pricing Section tweaks */
+.pricing-container {
+  border-top: 1px solid #f4f4f4;
+  padding-top: 20px;
+}
+
+.pro-pricing-mention {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  font-style: italic;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiered-pricing-list {
+  background-color: var(--color-off-white);
+  padding: 15px;
+  border-radius: var(--radius-std);
+  border: 1px solid rgba(85, 107, 47, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pro-target-banner {
+    padding: 20px;
+    margin: 0 10px 30px;
+  }
+  .pro-target-sectors {
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+  .profile-toggle-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+  .category-filter-btn {
+    padding: 8px 15px;
+    font-size: 0.75rem;
+  }
+}
