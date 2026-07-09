@@ -573,6 +573,7 @@ const productsData = [
       "Parfait pour l'hôtellerie, restauration et traiteurs",
       "Présentation soignée et hygiène garantie"
     ],
+    reservationPossible: true,
     pricing: {
       particulier: {
         tiers: [
@@ -733,6 +734,11 @@ const Products = () => {
                 </div>
                 <div className="product-meta">
                   <h3 className="product-title">{product.title}</h3>
+                  {product.reservationPossible && (
+                    <div style={{ marginBottom: "15px" }}>
+                      <span className="reservation-badge">Réservation possible</span>
+                    </div>
+                  )}
 
                   <ul
                     style={{
