@@ -701,7 +701,7 @@ const Products = () => {
                 >
                   <ShieldCheck size={16} color="var(--color-gold)" />{" "}
                   <span>
-                    Livraison <strong>GRATUITE</strong> dès 39 CHF d'achat
+                    Livraison <strong>GRATUITE</strong> dès 50 CHF d'achat à Lausanne et aux alentours
                   </span>
                 </div>
                 <div>• Frais de port : 12 CHF (si commande inférieure)</div>
